@@ -1,0 +1,8 @@
+1. Siapkan sebuah queue untuk menyimpan node-node yang akan dikunjungi.
+2. Masukkan node akar (root) ke dalam queue.
+3. Selama queue tidak kosong, lakukan langkah berikut:
+  a. Ambil node paling depan dari queue.
+  b. Proses node tersebut (misalnya, cetak nilainya).
+  c. Jika node memiliki anak kiri, masukkan anak kiri ke dalam queue.
+  d. Jika node memiliki anak kanan, masukkan anak kanan ke dalam queue.
+4. Ulangi langkah 3 sampai queue kosong (semua node telah dikunjungi).

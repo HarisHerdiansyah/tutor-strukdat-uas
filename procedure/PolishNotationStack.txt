@@ -1,0 +1,17 @@
+Infix -> Postfix
+1. Siapkan stack kosong untuk operator dan string hasil.
+2. Untuk setiap karakter pada infix:
+  a. Jika karakter adalah operand (huruf/angka), tambahkan ke string hasil.
+  b. Jika karakter adalah '(', masukkan ke stack.
+  c. Jika karakter adalah ')', keluarkan operator dari stack sampai '(' ditemukan, dan setiap operator yang dikeluarkan tambahkan ke string hasil, lalu keluarkan setelah iterasi selesai '('.
+  d. Jika karakter adalah operator:
+    - Selama top stack adalah operator dengan prioritas lebih tinggi atau sama, keluarkan dari stack ke hasil.
+    - Masukkan operator saat ini ke stack.
+3. Setelah iterasi selesai, keluarkan semua operator dari stack ke hasil sebagai antisipasi jika masih ada operator di stack.
+4. Hasil akhir adalah ekspresi postfix.
+
+Infix -> Prefix
+1. Balikkan string infix, dan pastikan posisi tanda kurung diatur sebagai mana mestinya.
+2. Panggil fungsi postfix dari string infix yang telah di-reverse.
+3. Hasil dari fungsi postfix, di-reverse sekali lagi.
+4. Hasil akhir adalah ekspresi prefix.

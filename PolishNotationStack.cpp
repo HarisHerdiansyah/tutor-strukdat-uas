@@ -3,30 +3,30 @@
 #include <cctype>
 #include <string>
 
-// Memberikan prioritas ke setiap operator
+// ? Memberikan prioritas ke setiap operator
 int priority(char c) {
   if (c == '^') return 3;
   if (c == '*' || c == '/') return 2;
-  return 1; // '+' atau '-'
+  return 1; // * '+' atau '-'
 }
 
-// Mengecek apakah karakter adalah operator
+// ? Mengecek apakah karakter adalah operator
 bool is_operator(char c) {
   return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
 }
 
-// Membalik string sekaligus menukar '(' dengan ')' dan sebaliknya
+// ? Membalik string sekaligus menukar '(' dengan ')' dan sebaliknya
 std::string reverse_string(std::string str) {
   Stack<char> stack;
   
-  // Proses setiap karakter untuk dibalik
+  // * Proses setiap karakter untuk dibalik
   for (char s: str) {
     if (s == '(') stack.push(')');
     else if (s == ')') stack.push('(');
     else stack.push(s);
   }
 
-  // Ambil karakter dari stack untuk membentuk string terbalik
+  // * Ambil karakter dari stack untuk membentuk string terbalik
   std::string reversed = "";
   ptr_node<char> current = stack.top();
   while (current) {
@@ -37,41 +37,41 @@ std::string reverse_string(std::string str) {
   return reversed;
 }
 
-// Mengubah ekspresi infix menjadi postfix
+// ? Mengubah ekspresi infix menjadi postfix
 std::string get_postfix(std::string infix) {
   Stack<char> stack;
   std::string result = "";
 
   for (char c : infix) {
-    if (std::isalnum(c)) {
-      result += c;  // Operand langsung ke hasil
+   if (std::isalnum(c)) {
+    result += c;  // * Operand langsung ke hasil
 
-    } else if (c == '(') {
-      stack.push(c);  // Kurung buka langsung ke stack
+   } else if (c == '(') {
+    stack.push(c);  // * Kurung buka langsung ke stack
 
-    } else if (c == ')') {
-      // Pop semua operator hingga kurung buka ditemukan
-      while (!stack.is_stack_empty() && stack.top()->data != '(') {
-        result += stack.pop();
-      }
-      if (!stack.is_stack_empty() && stack.top()->data == '(')
-        stack.pop(); // Pop kurung buka
-
-    } else if (is_operator(c)) {
-      // Selama top stack adalah operator dengan prioritas ≥ current
-      while (!stack.is_stack_empty() && is_operator(stack.top()->data) &&
-             priority(c) <= priority(stack.top()->data)) {
-        result += stack.pop();
-      }
-      stack.push(c); // Masukkan operator saat ini
+   } else if (c == ')') {
+    // * Pop semua operator hingga kurung buka ditemukan
+    while (!stack.is_stack_empty() && stack.top()->data != '(') {
+      result += stack.pop();
     }
+    if (!stack.is_stack_empty() && stack.top()->data == '(')
+      stack.pop(); // * Pop kurung buka
+
+   } else if (is_operator(c)) {
+    // * Selama top stack adalah operator dengan prioritas ≥ current
+    while (!stack.is_stack_empty() && is_operator(stack.top()->data) &&
+         priority(c) <= priority(stack.top()->data)) {
+      result += stack.pop();
+    }
+    stack.push(c); // * Masukkan operator saat ini
+   }
   }
 
-  // Pop sisa operator dari stack
+  // * Pop sisa operator dari stack
   while (!stack.is_stack_empty()) {
-    char data = stack.pop();
-    if (data != '(' && data != ')')  // Abaikan kurung jika ada
-      result += data;
+   char data = stack.pop();
+   if (data != '(' && data != ')')  // * Abaikan kurung jika ada
+    result += data;
   }
 
   return result;

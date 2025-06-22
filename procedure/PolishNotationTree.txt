@@ -1,0 +1,18 @@
+Algoritma fungsi build:
+1. Siapkan stack kosong untuk menyimpan pointer ke node pohon.
+2. Ekspresi infix, diubah ke bentuk postfix terlebih dahulu
+3. Untuk setiap karakter pada string postfix (misal expr):
+   a. Jika karakter adalah operand (huruf/angka):
+      - Buat node pohon baru berisi karakter tersebut.
+      - Push node ke stack.
+   b. Jika karakter adalah operator:
+      - Pop dua node dari stack (pertama sebagai right child, kedua sebagai left child).
+      - Buat node baru berisi operator.
+      - Set left dan right child node operator ke dua node hasil pop tadi.
+      - Push node operator ke stack.
+4. Setelah semua karakter diproses, pop satu node dari stack.
+   Node ini adalah root pohon ekspresi.
+
+Print prefix -> Preorder Traversal
+Print infix -> Inorder Traversal
+Print postfix -> Postorder Traversal
