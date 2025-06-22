@@ -1,6 +1,6 @@
-#include "ADT/Stack.hpp"  // Gunakan ADT Stack buatanmu
+#include "ADT/Stack.hpp"
 #include <iostream>
-#include <cctype>         // Untuk std::isalnum
+#include <cctype>
 #include <string>
 
 // Memberikan prioritas ke setiap operator
