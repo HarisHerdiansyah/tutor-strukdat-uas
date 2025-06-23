@@ -32,7 +32,10 @@ class LinkedList {
       head = nullptr;
     }
 
-  protected:
+    ptr_node<T> get_head() {
+      return this->head;
+    }
+
     ptr_node<T> create_node(T data) {
       ptr_node<T> new_node = new Node<T>;
       new_node->data = data;
@@ -40,6 +43,7 @@ class LinkedList {
       return new_node;
     }
 
+  protected:
     void insert_e(ptr_node<T> new_node) {
       if (head == nullptr) {
         head = new_node;
@@ -103,10 +107,6 @@ class LinkedList {
 
     bool is_empty() {
       return head == nullptr;
-    }
-
-    ptr_node<T> get_head() {
-      return this->head;
     }
 };
 
